@@ -7,6 +7,11 @@ import { InPersonClassesPage } from './features/classes/components/InPersonClass
 import { RobotKitsPage } from './features/kits/components/RobotKitsPage';
 import { PROMOTIONAL_CONTENT } from './features/promotional/constants';
 
+// Force scroll position reset on refresh
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+
 // App Component v1.0.0 - Initial Firebase Deployment
 function App() {
   const [email, setEmail] = useState('');
@@ -21,6 +26,7 @@ function App() {
   const learningOptionsRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
+  // Intersection Observer for fade-in effects
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,6 +51,26 @@ function App() {
 
     return () => observer.disconnect();
   }, []);
+
+  // Immediate scroll reset on mount
+  useEffect(() => {
+    // Force immediate scroll reset
+    window.scrollTo(0, 0);
+    document.documentElement.style.zoom = '100%';
+    
+    // Add a small delay to ensure scroll is reset after any browser auto-scroll
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, []); 
+
+  // Scroll to top on page changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.style.zoom = '100%';
+  }, [showOnlineCourses, showInPersonClasses, showRobotKits]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,12 +109,12 @@ function App() {
       </div>
 
       {/* Main content */}
-      <div className="container mx-auto px-4 py-12 relative">
+      <div className="container mx-auto px-4 pt-4 relative">
         {/* Hero section - Always visible */}
-        <div className="flex flex-col items-center justify-center min-h-[100vh] text-center">
-          <div className="space-y-8 max-w-4xl">
+        <div className="flex flex-col items-center justify-center min-h-[90vh] text-center">
+          <div className="space-y-6 max-w-4xl">
             {/* Logo and title */}
-            <div className="flex items-center justify-center space-x-6 mb-12">
+            <div className="flex items-center justify-center space-x-6 mb-8">
               <Robot className="w-16 h-16 text-[#FF4D00] transform -rotate-12" />
               <h1 className="text-7xl font-black tracking-tight text-white transform skew-x-6 drop-shadow-[0_0_25px_rgba(255,77,0,0.5)]" style={{ textShadow: '4px 4px 0px #FF4D00' }}>
                 STARBASE ACADEMY
