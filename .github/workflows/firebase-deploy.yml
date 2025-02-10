@@ -8,6 +8,7 @@ on:
       - 'src/**'
       - 'public/**'
       - 'package*.json'
+      - 'firebase.json'
 
 jobs:
   deploy:
