@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Video, Play, BookOpen, Award, CheckCircle, Star, Users, Clock, ArrowRight } from 'lucide-react';
 import { PricingTier } from './PricingTier';
 import { CourseCard } from './CourseCard';
@@ -7,6 +7,12 @@ import { COURSES, TESTIMONIALS, PRICING_TIERS } from '../constants';
 
 export function OnlineCoursesPage() {
   const [email, setEmail] = useState('');
+
+  // Scroll to top and reset zoom on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.style.zoom = '100%';
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

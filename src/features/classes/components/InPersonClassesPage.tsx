@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, MapPin, Calendar, ArrowRight, Rocket, Gift } from 'lucide-react';
 import { ProgramCard } from './ProgramCard';
 import { FacilityCard } from './FacilityCard';
@@ -9,6 +9,12 @@ import { CLASS_PROGRAMS, FACILITIES, INSTRUCTORS, PRICING_PLANS } from '../const
 export function InPersonClassesPage() {
   const [contactInfo, setContactInfo] = useState({ name: '', email: '', phone: '' });
   const [showEnrollmentForm, setShowEnrollmentForm] = useState(false);
+
+  // Scroll to top and reset zoom on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.style.zoom = '100%';
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

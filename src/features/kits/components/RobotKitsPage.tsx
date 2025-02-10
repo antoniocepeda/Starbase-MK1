@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Star, ShoppingCart, Gift, Rocket, ArrowRight, Filter, Search, Tag, School, Award, Clock } from 'lucide-react';
 import { ROBOT_KITS, CATEGORIES, SPECIAL_OFFERS } from '../constants';
 import type { RobotKit } from '../types';
@@ -8,6 +8,12 @@ export function RobotKitsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedKit, setSelectedKit] = useState<RobotKit | null>(null);
   const [showCart, setShowCart] = useState(false);
+
+  // Scroll to top and reset zoom on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.style.zoom = '100%';
+  }, []);
 
   const filteredKits = ROBOT_KITS.filter(kit => {
     const matchesCategory = !selectedCategory || kit.category.toLowerCase() === selectedCategory.toLowerCase();
