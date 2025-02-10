@@ -7,6 +7,7 @@ import { InPersonClassesPage } from './features/classes/components/InPersonClass
 import { RobotKitsPage } from './features/kits/components/RobotKitsPage';
 import { PROMOTIONAL_CONTENT } from './features/promotional/constants';
 
+// App Component v1.0.0 - Initial Firebase Deployment
 function App() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
