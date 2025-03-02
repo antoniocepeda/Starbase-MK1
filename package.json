@@ -1,0 +1,20 @@
+{
+  "name": "edtech-florida-gators",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd project && npm run dev",
+    "build": "cd project && npm run build",
+    "lint": "cd project && npm run lint",
+    "preview": "cd project && npm run preview",
+    "server": "cd project && npm run server",
+    "start": "cd project && npm run dev:all",
+    "firebase:login": "cd project && npm run firebase:login",
+    "firebase:init": "cd project && npm run firebase:init",
+    "firebase:emulators": "cd project && npm run firebase:emulators",
+    "deploy": "cd project && npm run deploy:all",
+    "deploy:functions": "cd project && npm run deploy:functions",
+    "deploy:hosting": "cd project && npm run deploy:hosting"
+  }
+}
