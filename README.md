@@ -64,6 +64,10 @@ This will deploy both the Firebase Functions and the React application to Fireba
 
 Your application will be available at: `https://starbase-mk1.web.app`
 
+## CI/CD
+
+This project uses GitHub Actions for continuous integration and deployment. When you push to the master branch, the application will be automatically built and deployed to Firebase.
+
 ## Features
 
 - **Email Subscription**: Collect and store email addresses in Firestore
